@@ -12,20 +12,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <div ng-controller="HomeCtrl as home" data-ng-init="initHome()">
-  <div ng-show="home.staticHome" class="box width-full home">
+  <div class="home-logout-bg" ng-if="!ticket">
+    <img src="assets/images/logout-bg.jpg" />
+  </div>
+  <div ng-show="home.staticHome" class="box width-full home" ng-if="ticket">
     <div class="zeppelin">
       <div class="zeppelin2"></div>
     </div>
     <div style="margin-top: -380px;">
-      <h1 class="box-heading" id="welcome">
+      <!-- <h1 class="box-heading" id="welcome">
         Welcome to Zeppelin!
       </h1>
       Zeppelin is web-based notebook that enables interactive data analytics.<br/>
-      You can make beautiful data-driven, interactive, collaborative document with SQL, code and even more!<br/>
+      You can make beautiful data-driven, interactive, collaborative document with SQL, code and even more!<br/> -->
 
       <div class="row">
         <div class="col-md-4" ng-if="ticket">
-          <h4>Notebook
+          <h4>工作簿
             <i ng-class="isReloadingNotes ? 'fa fa-refresh fa-spin' : 'fa fa-refresh'"
               ng-style="!isReloadingNotes && {'cursor': 'pointer'}" style="font-size: 13px;"
               ng-click="reloadNoteList();"
@@ -35,9 +38,9 @@ limitations under the License.
 
           <div>
             <h5><a href="" data-toggle="modal" data-target="#noteImportModal" style="text-decoration: none;">
-              <i style="font-size: 15px;" class="fa fa-upload"></i> Import note</a></h5>
+              <i style="font-size: 15px;" class="fa fa-upload"></i> 导入</a></h5>
             <h5 ng-controller="NoteCreateCtrl as noteCreateCtrl"><a href="" data-toggle="modal" data-target="#noteCreateModal" style="text-decoration: none;" ng-click="noteCreateCtrl.getInterpreterSettings()">
-              <i style="font-size: 15px;" class="icon-notebook"></i> Create new note</a></h5>
+              <i style="font-size: 15px;" class="icon-notebook"></i> 创建</a></h5>
             <ul id="notebook-names">
               <li class="filter-names" ng-include="'components/note-name-filter/note-name-filter.html'"></li>
               <li ng-repeat="note in home.notes.list | filter:query.q track by $index">
@@ -55,7 +58,7 @@ limitations under the License.
             </ul>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <h4>Help</h4>
           Get started with <a style="text-decoration: none;" target="_blank" rel="noopener noreferrer"
                               href="http://zeppelin.apache.org/docs/{{zeppelinVersion}}/index.html">Zeppelin documentation</a><br/>
@@ -69,7 +72,7 @@ limitations under the License.
              target="_blank" rel="noopener noreferrer"><i style="font-size: 15px;" class="fa fa-bug"></i> Issues tracking</a><br/>
           <a style="text-decoration: none;" href="https://github.com/apache/zeppelin"
              target="_blank" rel="noopener noreferrer"><i style="font-size: 20px;" class="fa fa-github"></i> Github</a>
-        </div>
+        </div> -->
       </div>
     </div>
     <br/><br/><br/>

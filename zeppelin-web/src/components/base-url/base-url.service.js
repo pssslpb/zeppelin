@@ -34,10 +34,12 @@ function BaseUrlService() {
     let wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
     return wsProtocol + '//' + location.hostname + ':' + this.getPort() +
       skipTrailingSlash(location.pathname) + '/ws';
+    // return wsProtocol + '//116.196.104.194/dnote/ws';
   };
 
   this.getBase = function() {
     return location.protocol + '//' + location.hostname + ':' + this.getPort() + location.pathname;
+    // return location.protocol + '//116.196.104.194/dnote';
   };
 
   this.getRestApiBase = function() {
